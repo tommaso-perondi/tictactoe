@@ -61,6 +61,7 @@ function draw(){
 			if((temp_matrix[2]+temp_matrix[5]+temp_matrix[8])==3 || (temp_matrix[2]+temp_matrix[5]+temp_matrix[8])==12)win(temp_matrix[2]);
 			if((temp_matrix[0]+temp_matrix[4]+temp_matrix[8])==3 || (temp_matrix[0]+temp_matrix[4]+temp_matrix[8])==12)win(temp_matrix[0]);
 			if((temp_matrix[2]+temp_matrix[4]+temp_matrix[6])==3 || (temp_matrix[2]+temp_matrix[4]+temp_matrix[6])==12)win(temp_matrix[2]);
+			if((temp_matrix[0]+temp_matrix[1]+temp_matrix[2]+temp_matrix[3]+temp_matrix[4]+temp_matrix[5]+temp_matrix[6]+temp_matrix[7]+temp_matrix[8])>=21)win(0);
 		}
 	}
 }
@@ -68,5 +69,6 @@ function draw(){
 function win(team){
 	if (team == 1)document.getElementById('win').innerHTML="Cross Win!!"
 	if (team == 4)document.getElementById('win').innerHTML="Circle Win!!"
+	if (team == 0)document.getElementById('win').innerHTML="Game tied!!"
 	noLoop();
 }
