@@ -10,14 +10,9 @@ var cross=1;
 var temp_matrix = [0,0,0,0,0,0,0,0,0];
 
 function setup(){
-	createCanvas(width_,height_)
-	background(0);
-	noStroke();
-	fill(255);
-	rect(width/3,0, lines_thickness,height, 10);
-	rect(width/1.5,0, lines_thickness,height, 10);
-	rect(0,height/3,width, lines_thickness, 10);
-	rect(0,height/1.5,width, lines_thickness, 10);
+	var canvas = createCanvas(width_,height_);
+	canvas.parent('canvas-holder');
+	setComponents();
 	frameRate(20);
 }
 
@@ -53,6 +48,7 @@ function draw(){
 				temp_matrix[y*3 + x]=4;
 				cross=1;
 			}
+			console.log(temp_matrix);
 			if((temp_matrix[0]+temp_matrix[1]+temp_matrix[2])==3 || (temp_matrix[0]+temp_matrix[1]+temp_matrix[2])==12)win(temp_matrix[0]);
 			if((temp_matrix[3]+temp_matrix[4]+temp_matrix[5])==3 || (temp_matrix[3]+temp_matrix[4]+temp_matrix[5])==12)win(temp_matrix[3]);
 			if((temp_matrix[6]+temp_matrix[7]+temp_matrix[8])==3 || (temp_matrix[6]+temp_matrix[7]+temp_matrix[8])==12)win(temp_matrix[6]);
@@ -65,10 +61,27 @@ function draw(){
 		}
 	}
 }
-
+function setComponents(){
+	translate(0,0);
+	background(0);
+	fill(255);
+	rect(width/3,0, lines_thickness,height, 10);
+	rect(width/1.5,0, lines_thickness,height, 10);
+	rect(0,height/3,width, lines_thickness, 10);
+	rect(0,height/1.5,width, lines_thickness, 10);
+	document.getElementById('win').innerHTML="";
+}
 function win(team){
-	if (team == 1)document.getElementById('win').innerHTML="Cross Win!!"
-	if (team == 4)document.getElementById('win').innerHTML="Circle Win!!"
-	if (team == 0)document.getElementById('win').innerHTML="Game tied!!"
+	cross=1;
+	temp_matrix = [0,0,0,0,0,0,0,0,0];
+	if (team == 1)document.getElementById('win').innerHTML="Cross Win!!";
+	if (team == 4)document.getElementById('win').innerHTML="Circle Win!!";
+	if (team == 0)document.getElementById('win').innerHTML="Game tied!!";
 	noLoop();
+}
+
+function reset(){
+	temp_matrix = [0,0,0,0,0,0,0,0,0];
+	setup()
+	loop();
 }

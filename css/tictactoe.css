@@ -7,5 +7,16 @@ canvas {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: red;
+}
+button {
+  position: absolute;
+  top: 90%;
+  text-align: center;
+  width: 100%;
+}
+p {
+  position: absolute;
+  text-align: center;
+  top: 100px;
+  left: 45%;
 }
